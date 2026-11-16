@@ -1,0 +1,20 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+
+parameters:
+    paths:
+        - app/
+        - bootstrap/app.php
+        - config/
+        - database/
+        - routes/
+
+    level: 7
+
+    ignoreErrors:
+        # Ce trait est utilisé par le composant Livewire mono-fichier
+        # resources/views/pages/settings/⚡profile.blade.php, que PHPStan n'analyse pas.
+        -
+            identifier: trait.unused
+            path: app/Concerns/ProfileValidationRules.php
